@@ -39,7 +39,7 @@ loads nothing from anywhere except this repository.
 
 ## Contact
 
-<planview.jn@gmail.com>
+<planview.apps@gmail.com>
 
 Problems and bug reports: <https://github.com/biplab-bn/plain-view-site/issues>
 
