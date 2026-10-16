@@ -39,9 +39,17 @@ restructuring the site.
    published". Never write "varies". **A wrong privacy claim is far worse than a
    missing one**, and a store reviewer will check it against the app's data
    safety form.
-5. **Never soften a permission claim.** If an app uses Device Administrator, an
-   Accessibility service, or shows advertising, say exactly that, in the same
-   words, everywhere the app is described.
+5. **Never soften a permission claim, and never shorten one.** If an app uses
+   Device Administrator, an Accessibility service, or shows advertising, say
+   exactly that. The `permissions` value must also be the app's **complete**
+   list, not the two or three that sound most important: naming two of eight
+   reads as an under-disclosure on the page a store reviewer checks first.
+   Count the `<uses-permission>` lines in the manifest *and* look for
+   `android:permission="…"` attributes on `<service>` and `<receiver>`
+   elements, because those declare permissions too. Soft Keys' Accessibility
+   service is declared that way, with
+   `android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"`, and a
+   grep for `uses-permission` alone would miss it.
 6. **Mobile first.** Reviewers and users open these pages on phones.
 7. **Light and dark mode** through `prefers-color-scheme`. No theme-switching
    JavaScript.
@@ -103,6 +111,13 @@ Follow these in order.
    value. Do not leave an old slug, page path or tagline behind. Set `icon` to
    `null` if there is no icon yet, and `store` and `web` to `null` until a real,
    working URL exists.
+
+   Read the app's manifest and copy out **every** permission before you write
+   `permissions`, including the ones declared as attributes on `<service>` and
+   `<receiver>` elements rather than as `<uses-permission>` lines. Write it as a
+   plain-English list, and explain each item on the app's page next to its
+   `android.permission` constant, so the list can be checked against the
+   manifest line by line.
 
    ```js
    {
@@ -201,6 +216,10 @@ Run this before reporting any change as finished.
       text is present in the page source, not assembled by script.
 - [ ] Every app is named in the "Apps covered by this policy" list and has a row
       in the permissions table.
+- [ ] For each app, its `permissions` value is checked off against its
+      manifest: every `<uses-permission>` line plus every
+      `android:permission="…"` on a `<service>` or `<receiver>`. Nothing may be
+      missing, on any of the pages that state it.
 - [ ] The licence wording in the footer of `privacy.html` and `index.html`
       matches the licences the apps are actually released under.
 - [ ] No link on any page points at a repository that is not public, and
