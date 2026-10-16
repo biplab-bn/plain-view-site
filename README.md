@@ -45,5 +45,10 @@ Problems and bug reports: <https://github.com/biplab-bn/plain-view-site/issues>
 
 ## Licence
 
-The text and images in this repository describe proprietary software and are
-copyright plain.view. All rights reserved.
+The text and images in this repository are copyright plain.view. All rights
+reserved.
+
+The apps the site describes are licensed separately, and the site says so
+plainly: Notepad: Private Notes and Soft Keys - Volume & Power Controller are
+proprietary software, while VentoyDroid is free software under the
+GPL-3.0-or-later.

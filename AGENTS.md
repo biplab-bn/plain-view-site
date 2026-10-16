@@ -50,6 +50,12 @@ restructuring the site.
 9. **Never link to a private repository.** A dead link is a common store
    rejection reason. The only repository this site may reference is
    `biplab-bn/plain-view-site`, which is public.
+10. **State each app's licence correctly, and never as a blanket claim.**
+    Notepad: Private Notes and Soft Keys are proprietary; VentoyDroid is free
+    software under the GPL-3.0-or-later. A footer saying "all rights reserved"
+    over an app released under the GPL is a false licence claim. When you add an
+    app, add its licence to the wording in the footer of `privacy.html` and
+    `index.html` rather than assuming it is proprietary.
 
 ## The file map
 
@@ -195,6 +201,8 @@ Run this before reporting any change as finished.
       text is present in the page source, not assembled by script.
 - [ ] Every app is named in the "Apps covered by this policy" list and has a row
       in the permissions table.
+- [ ] The licence wording in the footer of `privacy.html` and `index.html`
+      matches the licences the apps are actually released under.
 - [ ] No link on any page points at a repository that is not public, and
       `grep -ri "biplab-bn" .` only ever shows `plain-view-site`.
 - [ ] Every store and web link that renders opens. Any `null` renders as text:
