@@ -52,7 +52,7 @@ const APPS = [
     store: null,
     web: null,
     page: "apps/soft-keys.html",
-    permissions: "Device Administrator, and an Accessibility service",
+    permissions: "Device Administrator, an Accessibility service, Foreground service, Foreground service (special use), Notifications, Boot completed, Vibrate, Modify audio settings",
     collects: "Nothing",
     since: null,
     screenshots: []

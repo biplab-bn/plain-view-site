@@ -55,7 +55,7 @@
     </li>
     <li>
       <a href="apps/soft-keys.html">Soft Keys - Volume &amp; Power Controller</a>
-      <span class="muted">Android app for volume, lock and power controls. Uses Device Administrator and an Accessibility service. No data collected.</span>
+      <span class="muted">Android app for volume, lock and power controls. Uses Device Administrator, an Accessibility service and a short list of further permissions, every one of which is named in the table below. No data collected.</span>
     </li>
     <li>
       <a href="apps/ventoydroid.html">VentoyDroid</a>
@@ -91,7 +91,7 @@
       <tr data-facts="soft-keys">
         <td data-label="App">Soft Keys - Volume &amp; Power Controller</td>
         <td data-label="Platform"><span data-fact="platform">Android</span></td>
-        <td data-label="Permissions"><span data-fact="permissions">Device Administrator, and an Accessibility service</span></td>
+        <td data-label="Permissions"><span data-fact="permissions">Device Administrator, an Accessibility service, Foreground service, Foreground service (special use), Notifications, Boot completed, Vibrate, Modify audio settings</span></td>
         <td data-label="Data collected"><span data-fact="collects">Nothing</span></td>
       </tr>
       <tr data-facts="ventoydroid">
@@ -137,29 +137,44 @@
   single item you pick rather than to your whole device.</p>
 
   <h3>Soft Keys - Volume &amp; Power Controller</h3>
-  <p>This is not a zero-permission app. It requests:</p>
+  <p>This is not a zero-permission app. These eight are the complete list
+  declared in the app's manifest, and each one exists to do a single visible
+  job.</p>
   <dl class="facts facts-wide">
     <dt>Device Administrator</dt>
-    <dd>Used for one thing only: locking the screen, as a replacement for a
-    broken power button. It is not used to erase the device, change passwords
-    or read anything.</dd>
+    <dd><span class="ident">android.permission.DEVICE_ADMIN</span> &mdash; used
+    for one thing only: locking the screen, as a replacement for a broken power
+    button. It is not used to erase the device, change passwords or read
+    anything.</dd>
     <dt>Accessibility service</dt>
-    <dd>Used only to open the system power menu. The service is deliberately
+    <dd><span class="ident">android.permission.BIND_ACCESSIBILITY_SERVICE</span>
+    &mdash; used only to open the system power menu. The service is deliberately
     minimal: it is declared with <code>canRetrieveWindowContent="false"</code>
     and requests no event types, so it cannot read what is on your screen. It
     opens one menu when you press one button.</dd>
     <dt>Foreground service</dt>
-    <dd>Keeps the notification control panel alive so the phone can be
-    controlled from the shade.</dd>
+    <dd><span class="ident">android.permission.FOREGROUND_SERVICE</span> &mdash;
+    keeping the control notification alive, so the phone can be controlled from
+    the shade.</dd>
+    <dt>Foreground service, special use</dt>
+    <dd><span class="ident">android.permission.FOREGROUND_SERVICE_SPECIAL_USE</span>
+    &mdash; the same job again, declared for the special-use foreground service
+    type. Android 14 and newer require a declared type before a service may keep
+    running in the background.</dd>
     <dt>Notifications</dt>
-    <dd>The control panel itself. On Android 13 and newer this is asked for at
-    the time it is first needed.</dd>
+    <dd><span class="ident">android.permission.POST_NOTIFICATIONS</span> &mdash;
+    the ongoing control notification itself. On Android 13 and newer this is
+    asked for at the time it is first needed.</dd>
     <dt>Boot completed</dt>
-    <dd>Restores the control panel after the phone restarts.</dd>
+    <dd><span class="ident">android.permission.RECEIVE_BOOT_COMPLETED</span>
+    &mdash; restoring the controls after a restart.</dd>
     <dt>Modify audio settings</dt>
-    <dd>Changes the volume streams the app controls.</dd>
+    <dd><span class="ident">android.permission.MODIFY_AUDIO_SETTINGS</span>
+    &mdash; adjusting volume levels, including the per-stream sliders.</dd>
     <dt>Vibrate</dt>
-    <dd>Optional haptic feedback. No vibration happens unless you turn it on.</dd>
+    <dd><span class="ident">android.permission.VIBRATE</span> &mdash; haptic
+    feedback when buttons are pressed. No vibration happens unless you turn it
+    on.</dd>
   </dl>
   <p>Soft Keys does <strong>not</strong> hold the internet permission. It has
   no way to send anything anywhere.</p>

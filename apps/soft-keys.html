@@ -36,7 +36,7 @@
 
   <dl class="facts facts-wide" data-facts="soft-keys">
     <dt>Platform</dt><dd data-fact="platform">Android</dd>
-    <dt>Permissions</dt><dd data-fact="permissions">Device Administrator, and an Accessibility service</dd>
+    <dt>Permissions</dt><dd data-fact="permissions">Device Administrator, an Accessibility service, Foreground service, Foreground service (special use), Notifications, Boot completed, Vibrate, Modify audio settings</dd>
     <dt>Data collected</dt><dd data-fact="collects">Nothing</dd>
     <dt>Published</dt><dd><span class="muted">Not yet published</span></dd>
     <dt>Get it</dt><dd><span class="muted">Store listing: coming soon</span></dd>
@@ -67,30 +67,44 @@
     </ul>
 
     <h2>What it asks for, and why</h2>
-    <p>This is not a zero-permission app, and it does not pretend to be. Each of
-    these exists to do one visible job:</p>
+    <p>This is not a zero-permission app, and it does not pretend to be. These
+    eight are the complete list declared in the app's manifest. Each one exists
+    to do a single visible job:</p>
     <dl class="facts facts-wide">
       <dt>Device Administrator</dt>
-      <dd>Only for locking the screen. It is not used to erase the device,
-      change passwords or read anything.</dd>
+      <dd><span class="ident">android.permission.DEVICE_ADMIN</span> &mdash;
+      locking the screen. It is not used to erase the device, change passwords
+      or read anything.</dd>
       <dt>Accessibility service</dt>
-      <dd>Only for opening the system power menu. It is declared with
+      <dd><span class="ident">android.permission.BIND_ACCESSIBILITY_SERVICE</span>
+      &mdash; opening the power menu. It is declared with
       <code>canRetrieveWindowContent="false"</code> and requests no event types
       at all, which means it cannot read what is on your screen. Some apps use
       an Accessibility service to see everything you do; this one is written so
       that it cannot.</dd>
       <dt>Foreground service</dt>
-      <dd>Keeps the notification control panel alive so the controls are always
+      <dd><span class="ident">android.permission.FOREGROUND_SERVICE</span>
+      &mdash; keeping the control notification alive, so the controls are always
       one swipe away.</dd>
+      <dt>Foreground service, special use</dt>
+      <dd><span class="ident">android.permission.FOREGROUND_SERVICE_SPECIAL_USE</span>
+      &mdash; the same job again, declared for the special-use foreground
+      service type, which Android 14 and newer require before a service may keep
+      running in the background.</dd>
       <dt>Notifications</dt>
-      <dd>The control panel itself. On Android 13 and newer, Android asks you to
-      allow notifications when the app first needs them.</dd>
+      <dd><span class="ident">android.permission.POST_NOTIFICATIONS</span>
+      &mdash; the ongoing control notification. On Android 13 and newer, Android
+      asks you to allow notifications when the app first needs them.</dd>
       <dt>Boot completed</dt>
-      <dd>Restores the control panel after the phone restarts.</dd>
+      <dd><span class="ident">android.permission.RECEIVE_BOOT_COMPLETED</span>
+      &mdash; restoring the controls after a restart.</dd>
       <dt>Modify audio settings</dt>
-      <dd>Changes the volume streams described above.</dd>
+      <dd><span class="ident">android.permission.MODIFY_AUDIO_SETTINGS</span>
+      &mdash; adjusting volume levels, including the per-stream sliders
+      described above.</dd>
       <dt>Vibrate</dt>
-      <dd>Optional haptic feedback, off unless you switch it on.</dd>
+      <dd><span class="ident">android.permission.VIBRATE</span> &mdash; haptic
+      feedback when buttons are pressed. Off unless you switch it on.</dd>
     </dl>
     <p>Soft Keys does <strong>not</strong> hold the internet permission. There is
     no way for it to send anything anywhere, which is also why it has no
