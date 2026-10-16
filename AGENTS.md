@@ -103,6 +103,11 @@ devtools open. A quiet console means every copy agrees.
 may read it with JavaScript switched off. That is why the check for it runs from
 the other pages rather than from the policy page itself.
 
+One copy of the app list is outside all of that: the `<noscript>` block in
+`index.html`, which is plain HTML for visitors with JavaScript disabled. Nothing
+compares it with anything, so it is updated by hand — step 1b below — and the
+checklist asks for it to be read against `apps.js` every time.
+
 ## Adding a new app
 
 Follow these in order.
@@ -136,6 +141,14 @@ Follow these in order.
      screenshots: []
    }
    ```
+
+   **1b. Update the `<noscript>` fallback in `index.html`.** It is a
+   hand-written duplicate of the app grid and does not read from `apps.js`. Add a
+   `<li>` for the new app, using the same wording for permissions and data
+   collection as `apps.js` and `privacy.html`, so all three copies agree. Do not
+   remove the `<noscript>` block: it is the only thing a visitor with JavaScript
+   disabled sees on the home page, and it is the one copy of the app list that
+   no script checks, so it has to be kept in step by hand.
 
 2. **Create the folder `assets/apps/<slug>/`** and put the screenshots in it,
    numbered in the order you want them shown: `01-something.png`,
@@ -216,6 +229,9 @@ Run this before reporting any change as finished.
       text is present in the page source, not assembled by script.
 - [ ] Every app is named in the "Apps covered by this policy" list and has a row
       in the permissions table.
+- [ ] The `<noscript>` list in `index.html` contains exactly the same app names,
+      and the same permissions and data-collection wording, as `assets/apps.js`
+      and the `privacy.html` table. All three must agree.
 - [ ] For each app, its `permissions` value is checked off against its
       manifest: every `<uses-permission>` line plus every
       `android:permission="…"` on a `<service>` or `<receiver>`. Nothing may be
