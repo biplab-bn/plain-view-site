@@ -48,13 +48,13 @@ const APPS = [
     kind: "android",
     tagline: "Software volume, power and lock controls for broken buttons. No root, no network.",
     icon: null,
-    status: "coming-soon",
+    status: "published",
     store: null,
     web: null,
     page: "apps/soft-keys.html",
     permissions: "Device Administrator, an Accessibility service, Foreground service, Foreground service (special use), Notifications, Boot completed, Vibrate, Modify audio settings",
     collects: "Nothing",
-    since: null,
+    since: "2026",
     screenshots: []
   },
   {
@@ -63,13 +63,13 @@ const APPS = [
     kind: "android",
     tagline: "Turn a USB stick into a multiboot installer using your phone. No root.",
     icon: null,
-    status: "coming-soon",
+    status: "published",
     store: null,
     web: null,
     page: "apps/ventoydroid.html",
     permissions: "USB host access, Internet, Network state, Foreground service, Notifications, Wake lock, and the advertising-ID permissions added by Google AdMob",
     collects: "Advertising data (Google AdMob) and technical diagnostics, the last only in an error report you choose to send",
-    since: null,
+    since: "2026",
     screenshots: []
   }
 ];
