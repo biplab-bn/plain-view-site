@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VentoyDroid — make a multiboot USB stick from your Android phone</title>
+<meta name="description" content="VentoyDroid installs the real Ventoy bootloader onto a USB stick from an Android phone over OTG. No root, no computer. Ad-supported; shows advertising supplied by Google AdMob.">
+<link rel="icon" href="../assets/icon-512.png">
+<link rel="apple-touch-icon" href="../assets/icon-512.png">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="../index.html">plain.view</a>
+    <nav>
+      <a href="../index.html">Apps</a>
+      <a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="app-head">
+    <img class="app-icon-lg" src="../assets/icon-512.png" alt="" width="96" height="96">
+    <div>
+      <h1>VentoyDroid</h1>
+      <p class="lede">Turn a USB stick into a multiboot installer using your
+      phone. No root.</p>
+      <p><span class="status is-soon">Coming soon</span>
+        <span class="muted">Android app</span></p>
+    </div>
+  </div>
+
+  <dl class="facts facts-wide" data-facts="ventoydroid">
+    <dt>Platform</dt><dd data-fact="platform">Android</dd>
+    <dt>Permissions</dt><dd data-fact="permissions">USB host access, Internet, Network state, Foreground service, Notifications, Wake lock, and the advertising-ID permissions added by Google AdMob</dd>
+    <dt>Data collected</dt><dd data-fact="collects">Advertising data (Google AdMob) and technical diagnostics, the last only in an error report you choose to send</dd>
+    <dt>Published</dt><dd><span class="muted">Not yet published</span></dd>
+    <dt>Get it</dt><dd><span class="muted">Store listing not yet published</span></dd>
+  </dl>
+
+  <div class="app-body">
+
+    <h2>What it is</h2>
+    <p>VentoyDroid brings <a href="https://www.ventoy.net" rel="noopener">Ventoy</a>
+    to Android. Plug a USB stick into your phone with an OTG adapter, install the
+    Ventoy bootloader, copy ISO files onto the stick, and boot any PC from it.
+    No computer is needed, and there is no root.</p>
+
+    <h2>What it does</h2>
+    <ul>
+      <li><strong>Installs the real Ventoy bootloader.</strong> The version 1.0.99
+      payload is bundled with the app and verified by SHA-256 before use. The GRUB
+      boot code, the core image and the VTOYEFI partition are written exactly where
+      the official installer puts them.</li>
+      <li><strong>Formats the data partition</strong> as FAT32 or exFAT, using
+      filesystem drivers that run inside the app. exFAT is chosen automatically when
+      any ISO is 4 GiB or larger, which is what Windows 11 and large Linux images
+      need; FAT32 is used otherwise, for the widest compatibility. Either way the
+      stick appears on any computer as an ordinary drive.</li>
+      <li><strong>Copies ISO files</strong> from your phone onto the stick, streamed
+      so that even a multi-gigabyte file never sits in memory, then verifies that
+      every file landed intact.</li>
+      <li><strong>Manages an installed stick.</strong> List, add and remove ISOs
+      later without reinstalling Ventoy. You can also just copy more ISOs onto the
+      stick from any computer.</li>
+    </ul>
+    <p>The stick it produces is a standard Ventoy stick, fully compatible with the
+    official Windows, Linux and Mac installer.</p>
+
+    <h2>How it works without root</h2>
+    <p>Android apps cannot write to mounted USB storage. They can, however, claim a
+    USB device through the Android USB Host API and speak its protocol directly.
+    VentoyDroid issues SCSI commands (<code>READ(10)</code> and
+    <code>WRITE(10)</code>) over USB Bulk-Only Transport, bypassing the system's
+    storage layer entirely. The partition-table writer, the filesystem driver and
+    the installer logic all run inside the app.</p>
+
+    <h2>What it asks for, and why</h2>
+    <dl class="facts facts-wide">
+      <dt>USB host access</dt>
+      <dd>Access to the stick you plug in, granted by you for that one device. It
+      is what lets the app write the bootloader without needing any permission to
+      read your phone's storage.</dd>
+      <dt>Internet, network state</dt>
+      <dd>For the Google advertising described below, and for nothing else.</dd>
+      <dt>Foreground service, wake lock</dt>
+      <dd>Keeps a long install from being killed part-way, and stops the phone
+      sleeping mid-write, which is the one moment an interruption could damage the
+      stick.</dd>
+      <dt>Notifications</dt>
+      <dd>The progress of an install, with a button to cancel it.</dd>
+      <dt>Advertising ID and ad-services permissions</dt>
+      <dd>Added by Google's AdMob library rather than written by hand:
+      <span class="ident">com.google.android.gms.permission.AD_ID</span> and the
+      <span class="ident">ACCESS_ADSERVICES_AD_ID</span>,
+      <span class="ident">ACCESS_ADSERVICES_ATTRIBUTION</span> and
+      <span class="ident">ACCESS_ADSERVICES_TOPICS</span> permissions.</dd>
+    </dl>
+    <p>VentoyDroid does <strong>not</strong> request permission to read your phone's
+    storage, and it writes only to the stick you select and confirm.</p>
+
+    <h2>Advertising, and what it means for you</h2>
+    <p>VentoyDroid is ad-supported. It shows a banner supplied by Google AdMob, and
+    one full-screen advertisement after an install finishes. Because Google serves
+    those advertisements, Google collects the data its own policies describe, which
+    can include device identifiers, IP address, ad interaction and approximate
+    location. plain.view never receives any of it. Where the law requires it &mdash;
+    in the EEA, the UK and Switzerland &mdash; Google's consent form appears first,
+    and declining it leaves the app fully usable, just without ads.</p>
+    <p>This is the one app published by plain.view that uses the network at all, and
+    the <a href="../privacy.html">privacy policy</a> says so in the same words used
+    here. It is stated on this page, in the policy and in the store listing because
+    it is the one thing about this app a person should know before installing it.</p>
+
+    <h2>Files and privacy</h2>
+    <p>Your ISO files never leave your phone. They are streamed straight from your
+    storage to the USB stick, and the app has no server of its own to upload them
+    to. Nothing is uploaded automatically: if you tap <em>Report this problem</em>,
+    your own mail app opens with a technical report already written, and nothing is
+    sent until you press send there. You can read and edit it first, or not send it.</p>
+
+    <h2>Requirements and limitations</h2>
+    <ul>
+      <li>Android 8.0 or newer, on a phone that supports USB host (OTG)</li>
+      <li>An OTG adapter, or a phone with a built-in USB port</li>
+      <li>A USB stick of about 2 GiB or more. <strong>Everything already on the
+      stick will be erased</strong>, and the app asks you to confirm that before it
+      writes anything.</li>
+      <li>MBR partition layout only, which matches the official default. GPT is not
+      supported yet.</li>
+      <li>There is no non-destructive install and no update mode yet.</li>
+      <li>The install pipeline is tested end to end against a virtual disk, but how
+      a stick boots still varies with PC firmware. Test your stick on the machine
+      you intend to use it with.</li>
+    </ul>
+
+    <h2>An independent installer</h2>
+    <p>VentoyDroid is an unofficial installer for the Ventoy boot manager. It is
+    not affiliated with, endorsed by, or published by the Ventoy project. Ventoy is
+    a trademark of its project. The bundled boot payload and the installer logic
+    derived from it come from the Ventoy project under the GPL-3.0, and the app
+    itself is free software under the same licence. The written offer of
+    corresponding source that the licence requires is included in the app, behind
+    the information button in its title bar.</p>
+
+    <h2>Where to get it</h2>
+    <p>VentoyDroid is not published yet, so there is no download link here. When it
+    is released, the link will appear on this page and on the
+    <a href="../index.html">apps page</a>.</p>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Contact: <span class="mail">planview.jn@gmail.com</span></p>
+    <p><a href="../privacy.html">Privacy policy</a></p>
+    <p><a href="https://github.com/biplab-bn/plain-view-site/issues">Report a problem</a></p>
+    <p>&copy; 2026 plain.view.</p>
+  </div>
+</footer>
+
+<script src="../assets/apps.js"></script>
+</body>
+</html>

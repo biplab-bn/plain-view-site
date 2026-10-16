@@ -1,0 +1,4 @@
+# Everything here is meant to be read, including by store reviewers and search
+# engines. There is nothing to hide and nothing to index selectively.
+User-agent: *
+Allow: /

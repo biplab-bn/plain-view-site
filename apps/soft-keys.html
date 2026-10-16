@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soft Keys - Volume &amp; Power Controller — volume, lock and power without the buttons</title>
+<meta name="description" content="Soft Keys replaces phone buttons that no longer work: volume control, screen lock via Device Administrator, and the power menu via a minimal Accessibility service. No root, no network permission, no data collected.">
+<link rel="icon" href="../assets/icon-512.png">
+<link rel="apple-touch-icon" href="../assets/icon-512.png">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="../index.html">plain.view</a>
+    <nav>
+      <a href="../index.html">Apps</a>
+      <a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="app-head">
+    <img class="app-icon-lg" src="../assets/icon-512.png" alt="" width="96" height="96">
+    <div>
+      <h1>Soft Keys - Volume &amp; Power Controller</h1>
+      <p class="lede">Software volume, power and lock controls for broken
+      buttons. No root, no network.</p>
+      <p><span class="status is-soon">Coming soon</span>
+        <span class="muted">Android app</span></p>
+    </div>
+  </div>
+
+  <dl class="facts facts-wide" data-facts="soft-keys">
+    <dt>Platform</dt><dd data-fact="platform">Android</dd>
+    <dt>Permissions</dt><dd data-fact="permissions">Device Administrator, and an Accessibility service</dd>
+    <dt>Data collected</dt><dd data-fact="collects">Nothing</dd>
+    <dt>Published</dt><dd><span class="muted">Not yet published</span></dd>
+    <dt>Get it</dt><dd><span class="muted">Store listing not yet published</span></dd>
+  </dl>
+
+  <div class="app-body">
+
+    <h2>What it is</h2>
+    <p>An app for a phone whose physical buttons have stopped working. It puts
+    the volume, the screen lock and the power menu on the screen, and in the
+    notification shade, so the phone stays usable after the hardware does
+    not.</p>
+
+    <h2>What it does</h2>
+    <ul>
+      <li><strong>Volume.</strong> Volume up, volume down and mute, plus a
+      separate slider for each stream: Media, Ring, Notification, Alarm and
+      Call.</li>
+      <li><strong>Lock the screen.</strong> Using Android's Device
+      Administrator, the same mechanism a system lock button uses.</li>
+      <li><strong>Open the power menu.</strong> Using a deliberately minimal
+      Accessibility service, so you can still reach power off and restart.</li>
+      <li><strong>Keep the screen on</strong> while the app is open, for a phone
+      whose screen timeout is a nuisance without working buttons.</li>
+      <li><strong>Notification controls.</strong> An ongoing notification with
+      volume, lock and power actions, so the phone can be controlled from the
+      shade without opening the app at all.</li>
+    </ul>
+
+    <h2>What it asks for, and why</h2>
+    <p>This is not a zero-permission app, and it does not pretend to be. Each of
+    these exists to do one visible job:</p>
+    <dl class="facts facts-wide">
+      <dt>Device Administrator</dt>
+      <dd>Only for locking the screen. It is not used to erase the device,
+      change passwords or read anything.</dd>
+      <dt>Accessibility service</dt>
+      <dd>Only for opening the system power menu. It is declared with
+      <code>canRetrieveWindowContent="false"</code> and requests no event types
+      at all, which means it cannot read what is on your screen. Some apps use
+      an Accessibility service to see everything you do; this one is written so
+      that it cannot.</dd>
+      <dt>Foreground service</dt>
+      <dd>Keeps the notification control panel alive so the controls are always
+      one swipe away.</dd>
+      <dt>Notifications</dt>
+      <dd>The control panel itself. On Android 13 and newer, Android asks you to
+      allow notifications when the app first needs them.</dd>
+      <dt>Boot completed</dt>
+      <dd>Restores the control panel after the phone restarts.</dd>
+      <dt>Modify audio settings</dt>
+      <dd>Changes the volume streams described above.</dd>
+      <dt>Vibrate</dt>
+      <dd>Optional haptic feedback, off unless you switch it on.</dd>
+    </dl>
+    <p>Soft Keys does <strong>not</strong> hold the internet permission. There is
+    no way for it to send anything anywhere, which is also why it has no
+    analytics, no crash reporting and no ads.</p>
+
+    <h2>Privacy</h2>
+    <p>Nothing is collected. Preferences, such as whether haptic feedback is
+    switched on, are ordinary local settings on your device. Full details are in
+    the <a href="../privacy.html">plain.view privacy policy</a>, which states
+    the same permissions and data collection for this app.</p>
+
+    <h2>Requirements</h2>
+    <ul>
+      <li>Android 8.0 (API level 26) or newer</li>
+      <li>No root. No OTG adapter. No account.</li>
+    </ul>
+
+    <h2>Where to get it</h2>
+    <p>Soft Keys is not published yet, so there is no download link here. When
+    it is released, the link will appear on this page and on the
+    <a href="../index.html">apps page</a>.</p>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Contact: <span class="mail">planview.jn@gmail.com</span></p>
+    <p><a href="../privacy.html">Privacy policy</a></p>
+    <p><a href="https://github.com/biplab-bn/plain-view-site/issues">Report a problem</a></p>
+    <p>&copy; 2026 plain.view. Private software. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../assets/apps.js"></script>
+</body>
+</html>
