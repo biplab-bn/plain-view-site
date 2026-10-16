@@ -114,17 +114,20 @@ function esc(text) {
     .replace(/"/g, "&quot;");
 }
 
-/* A link is only ever built from a real URL. Null renders as text. */
-function linkOrText(url, label) {
+/* A link is only ever built from a real URL. Null renders as text, never as a
+   link that looks like it works. */
+function linkOrText(url, label, whenMissing) {
   if (!url) {
-    return '<span class="muted">' + esc(label) + " not yet published</span>";
+    return '<span class="muted">' + esc(whenMissing) + "</span>";
   }
   return '<a href="' + esc(url) + '" rel="noopener">' + esc(label) + "</a>";
 }
 
 function storeSlot(app) {
-  if (app.kind === "web") return linkOrText(app.web, "Open the web app");
-  return linkOrText(app.store, "Store listing");
+  if (app.kind === "web") {
+    return linkOrText(app.web, "Open the web app", "Web app: coming soon");
+  }
+  return linkOrText(app.store, "Store listing", "Store listing: coming soon");
 }
 
 function renderCard(app) {
